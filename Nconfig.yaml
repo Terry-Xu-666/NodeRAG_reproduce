@@ -1,0 +1,38 @@
+#==============================================================================
+# AI Model Configuration
+#==============================================================================
+model_config:
+  service_provider: openai            # AI service provider (e.g., openai, azure)
+  model_name: gpt-4o-mini            # Model to use for text generation
+  api_keys: ~   # Your API key (optional)
+  temperature: 0                # Temperature for text generation
+  max_tokens: 10000                  # Maximum number of tokens to generate
+  rate_limit: 5                      # Rate limit for API calls (requests per second)
+
+embedding_config:
+  service_provider: openai_embedding  # Embedding service provider
+  embedding_model_name: text-embedding-3-small  # Model for text embeddings
+  api_keys: ~   # Your API key (optional)
+  rate_limit: 5                      # Rate limit for embedding requests
+
+#==============================================================================
+# Document Processing Configuration
+#==============================================================================
+config:
+  # Basic Settings
+  main_folder: ~                 # Root folder for document processing
+  language: English                 # Processing language
+  docu_type: mixed                   # Document type (mixed, pdf, txt, etc.)
+  
+  # Chunking Settings
+  chunk_size: 1048                   # Size of text chunks for processing
+  embedding_batch_size: 50           # Number of embeddings to process in one batch
+  
+  use_tqdm: False                    # Whether to show progress bars
+  use_rich: True                     # Whether to use rich text formatting
+  top_k: 10                          # Number of results to return from HNSW search
+  # Search Server Settings
+  url: '127.0.0.1'                  # Server URL
+  port: 5000                        # Server port
+ 
+

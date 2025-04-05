@@ -1,0 +1,58 @@
+#==============================================================================
+# AI Model Configuration
+#==============================================================================
+model_config:
+  service_provider: openai            # AI service provider (e.g., openai, gemini)
+  model_name: gpt-4o-mini            # Model name for text generation
+  api_keys: ~  # Your API key (optional)
+  temperature: 0                # Temperature parameter for text generation
+  max_tokens: 10000                  # Maximum tokens to generate
+  rate_limit: 40                      # API rate limit (requests per second)
+
+embedding_config:
+  service_provider: openai_embedding  # Embedding service provider
+  embedding_model_name: text-embedding-3-small  # Model name for text embeddings
+  api_keys: ~  # Your API key (optional)
+  rate_limit: 20                      # Rate limit for embedding requests
+
+
+#==============================================================================
+# Document Processing Configuration
+#==============================================================================
+config:
+  # Basic Settings
+  main_folder: ~  # Root folder for document processing
+  language: English                  # Document processing language
+  docu_type: mixed                   # Document type (mixed, pdf, txt, etc.)
+  
+  # Chunking Settings
+  chunk_size: 1048                   # Size of text chunks for processing
+  embedding_batch_size: 50           # Batch size for embedding processing
+  
+  # UI Settings
+  use_tqdm: False                    # Enable/disable progress bars
+  use_rich: True                     # Enable/disable rich text formatting
+  
+  # HNSW Index Settings
+  space: l2                         # Distance metric for HNSW (l2, cosine)
+  dim: 1536                         # Embedding dimension (must match embedding model)
+  m: 50                             # Number of connections per layer in HNSW
+  ef: 200                           # Size of dynamic candidate list in HNSW
+  m0: ~                             # Number of bi-directional links in HNSW
+  
+  # Summary Settings
+  Hcluster_size: 39                  # Number of clusters for high-level element matching
+  
+  # Search Server Settings
+  url: '127.0.0.1'                  # Server URL for search service
+  port: 5000                        # Server port number
+  unbalance_adjust: True            # Enable adjustment for unbalanced data
+  cross_node: 10                    # Number of cross nodes to return
+  Enode: 10                         # Number of entity nodes to return
+  Rnode: 30                         # Number of relationship nodes to return
+  Hnode: 10                         # Number of high-level nodes to return
+  HNSW_results: 10                  # Number of HNSW search results 
+  similarity_weight: 1              # Weight for similarity in personalized PageRank
+  accuracy_weight: 1                # Weight for accuracy in personalized PageRank
+  ppr_alpha: 0.5                    # Damping factor for personalized PageRank
+  ppr_max_iter: 2                   # Maximum iterations for personalized PageRank
